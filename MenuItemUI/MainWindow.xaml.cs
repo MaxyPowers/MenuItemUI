@@ -26,22 +26,30 @@ namespace MenuItemUI
             MakeTheMenu();
         }
 
+        /// <summary>
+        /// Сгенерировать случайное меню
+        /// </summary>
         private void MakeTheMenu()
         {
+            //Создать массив для 5 эелементов меню
             MenuItem[] menuItems = new MenuItem[5];
-            string guacamolePrice;
+            string guacamolePrice; //Переменная для хранения цены дополнительного элемента 
 
+            //Цикл инициализирует элементы массива
             for (int i = 0; i < menuItems.Length; i++)
             {
-                menuItems[i] = new MenuItem();
-                if(i >= 3)
+                menuItems[i] = new MenuItem(); //Выделить память для элемента массива
+                if(i >= 3) 
                 {
+                    //После трех итераций поле Breads у новых элементов инициализируется новым массивом
                     menuItems[i].Breads = new string[] {"plain bagel", "onion bagel", "pumpernickel bagel",
                                                         "everything bagel"};
                 }
+                //Сгенерировать элемент меню и цену
                 menuItems[i].GenerateMenuItem();
             }
 
+            //Вывести значения полей Description и Price в TextBlock
             item1.Text = menuItems[0].Description;
             price1.Text = menuItems[0].Price;
             item2.Text = menuItems[1].Description;
@@ -53,6 +61,7 @@ namespace MenuItemUI
             item5.Text = menuItems[4].Description;
             price5.Text = menuItems[4].Price;
 
+            //Дополнительный объект MenuItem с новыми массивами
             MenuItem specialMenuItem = new MenuItem()
             {
                 Proteins = new string[] { "Organic ham", "Mushroom patty", "Mortadella" },
@@ -60,11 +69,14 @@ namespace MenuItemUI
                 Condiments = new string[] { "dijon mustard", "miso dressing", "au jus" }
             };
 
+            //Сгенерировать состав и цену нового элемента
             specialMenuItem.GenerateMenuItem();
-            
+
+            //Вывести значине полей в TextBlock
             item6.Text = specialMenuItem.Description;
             price6.Text = specialMenuItem.Price;
 
+            //Еще один дополнительный элемент меню
             MenuItem guacamoleItem = new MenuItem();
             guacamoleItem.GenerateMenuItem();
             guacamolePrice = guacamoleItem.Price;
